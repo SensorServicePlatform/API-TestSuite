@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="115.161" errors="1" skipped="0" tests="10" name="edu.cmu.sv.sdsp.api.APIUnitTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\bin"/>
+    <property name="java.vm.version" value="23.25-b01"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\EclipseWS\Project1_Simulation"/>
+    <property name="java.runtime.version" value="1.7.0_25-b17"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="D:\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\maven\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\Java\jdk1.7.0_25;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static; D:\software;D:\编程软件\MinGW\bin;C:\;ython27\python;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\MinGW\bin;C:\cygwin\bin;C:\Program Files\PostgreSQL\9.2\bin;C:\Program Files (x86)\PharosSystems\Core;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;D:\nodejs\;D:\VisTrails\Python27_64\pythonw.exe;C:\Program Files (x86)\Git\cmd;D:\Ruby193\bin;D:\Ruby187\dev;D:\Ruby187\bin;D:\maven\bin;C:\Users\王\AppData\Roaming\npm;C:\Windows\system32;C:\Users\王\AppData\Local\Box\Box Edit\;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\王"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="user.name" value="王"/>
+    <property name="java.class.path" value="D:\maven\bin\..\boot\plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.7.0_25"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\lib\jfr.jar;C:\Program Files (x86)\Java\jdk1.7.0_25\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\maven\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="0.069" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testGetDevicesCSV"/>
+  <testcase time="0.039" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testAddDeviceType"/>
+  <testcase time="0.045" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testAddSensorType"/>
+  <testcase time="60.018" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testSensorReadingsTimeRange">
+    <error message="test timed out after 60000 milliseconds" type="java.lang.Exception">java.lang.Exception: test timed out after 60000 milliseconds
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:150)
+	at java.net.SocketInputStream.read(SocketInputStream.java:121)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:235)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:275)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:334)
+	at sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:633)
+	at sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:579)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1322)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:468)
+	at edu.cmu.sv.sdsp.util.HttpHelper.validateConnectionStatus(HttpHelper.java:148)
+	at edu.cmu.sv.sdsp.util.HttpHelper.httpGet(HttpHelper.java:46)
+	at edu.cmu.sv.sdsp.util.APIHelper.invokeHttpGet(APIHelper.java:156)
+	at edu.cmu.sv.sdsp.util.APIHelper.processGetSensorReadingsTimeRange(APIHelper.java:137)
+	at edu.cmu.sv.sdsp.api.APIUnitTest.testSensorReadingsTimeRange(APIUnitTest.java:184)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:47)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:44)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.internal.runners.statements.FailOnTimeout$StatementThread.run(FailOnTimeout.java:74)
+</error>
+    <system-out>[DEBUG] ====================================================
+[DEBUG] Test case started at :: 1385350412188
+[TRACE] Invoking a GET request for URL: http://einstein.sv.cmu.edu/sensors/10170102/05-04-2013T12:00:00/05-05-2013T12:00:00/acc_x/json?dateformat=ISO8601
+[TRACE] Inside openConnection() method
+[TRACE] Inside validateConnectionStatus() method
+</system-out>
+  </testcase>
+  <testcase time="0.202" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testGetSensorTypesCSV"/>
+  <testcase time="0.15" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testAddDevice"/>
+  <testcase time="0.323" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testAddSensor"/>
+  <testcase time="53.904" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testSpecificSensorReadings"/>
+  <testcase time="0.107" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testGetDevicesJson"/>
+  <testcase time="0.302" classname="edu.cmu.sv.sdsp.api.APIUnitTest" name="testPublishSensorReadings"/>
+</testsuite>
