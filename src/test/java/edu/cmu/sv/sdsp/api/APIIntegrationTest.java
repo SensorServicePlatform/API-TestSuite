@@ -26,19 +26,52 @@ import edu.cmu.sv.sdsp.factory.QueryStringFactory;
 import edu.cmu.sv.sdsp.util.APIHelper;
 import edu.cmu.sv.sdsp.util.APIHelper.ResultType;
 
+/**
+ * This JUnit test will test all apis provided in CMU-SV SDSP. The baic steps
+ * are to create random data and send request to the Einstain server, and check
+ * whether the result is right or not.
+ * 
+ * @author Gonghan Wang, Surya Kiran
+ * 
+ */
 @RunWith(JUnit4.class)
 public class APIIntegrationTest extends BaseTest {
+	/**
+	 * This is the factory to create all json objects for tests.
+	 */
 	private JsonObjectFactory jsonFactory;
+	/**
+	 * This is the factory to create all query strings for the tests.
+	 */
 	private QueryStringFactory queryStringFactory;
 
+	/**
+	 * Singleton pattern is used here to create two factories and reuse them for
+	 * all api test requests.
+	 */
 	public APIIntegrationTest() {
 		jsonFactory = JsonObjectFactory.getInstance();
 		queryStringFactory = QueryStringFactory.getInstance();
 	}
 
+	/**
+	 * This rule is to set the maximum running time for each task. When a test
+	 * runs over the rule time, cause a failure and go next.
+	 * 
+	 * The Timeout(1000*10) means the time can't exceed 10 seconds.
+	 */
 	@Rule
-	public Timeout globalTimeout = new Timeout(1000*10);
-	
+	public Timeout globalTimeout = new Timeout(1000 * 10);
+
+	/**
+	 * The test will check whether the devices show up as expected. First send a
+	 * get request of device object and then receive feedback from the server
+	 * machine.
+	 * 
+	 * If result is 'device saved', success. Otherwise, failure.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testNewDevicesShowupInGet() throws IOException {
 		JsonObject newDevice = jsonFactory.generateDeviceObject();
@@ -60,6 +93,13 @@ public class APIIntegrationTest extends BaseTest {
 				response.contains(newDevice.get("device_type").toString()));
 	}
 
+	/**
+	 * This test is to check whether the sensor operations work as expected.
+	 * First, add a sensor type and invoke the API to add a new device type.
+	 * Next make sure the temperature sensor will return a valid response.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testSensorOperations() throws IOException {
 		// Invoke the API to add a sensor type
@@ -80,6 +120,14 @@ public class APIIntegrationTest extends BaseTest {
 				response.equalsIgnoreCase(ADD_SENSOR_SUCCESSFUL));
 	}
 
+	/**
+	 * This test is to check whether the device operations work well. First,
+	 * process a test of the sensor type and return in json objects. Next,
+	 * invoke the API to add a new device type. Check the response and if it is
+	 * not null, success.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testDeviceOperations() throws IOException {
 		String response = APIHelper.processGetSensorTypes("firefly_v3",
@@ -98,6 +146,13 @@ public class APIIntegrationTest extends BaseTest {
 				response.equalsIgnoreCase(ADD_DEVICE_SUCCESSFUL));
 	}
 
+	/**
+	 * This test is to check when get and post requests work well on the
+	 * sensors. First, generate a sensor readings and publish it to the server.
+	 * Next, query that readings and check whether it's there in the server.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testPostGetSensors() throws IOException {
 		// post a sensor
@@ -116,6 +171,16 @@ public class APIIntegrationTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the readings by the time frame is as expected.
+	 * 
+	 * First test Query sensor readings for a specific type of sensor, in a
+	 * particular device, for a specific time range. After getting this result,
+	 * check the sensor readings of all devices. If both responses are right,
+	 * success.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testGetReadingsByTimeFrame() throws IOException {
 		String response = APIHelper
@@ -132,6 +197,15 @@ public class APIIntegrationTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To get all devices and all sensors are alive, not dead.
+	 * 
+	 * First, send a request to all devices and get basic types and formats of
+	 * them. Second, send a request to all sensors and get sensor readings of
+	 * all devices.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testGetAll() throws IOException {
 		// get all devices and all sensor types
@@ -142,7 +216,7 @@ public class APIIntegrationTest extends BaseTest {
 		assertReponseNotNull(response);
 		// 2. Check if the result is a proper JSON
 		getArrayFromJsonString(response);
-		
+
 		response = APIHelper
 				.processGetSensorReadingsAllDevices(queryStringFactory
 						.generateSensorReadingsAllDevicesQuery());
@@ -152,6 +226,12 @@ public class APIIntegrationTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * This test is to check all lastest readings. Send a request to get latest
+	 * reading for a sensor type in all registered devices.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testLastestReadings() throws IOException {
 		// get latest reading for a sensor type in all registered devices
@@ -162,13 +242,19 @@ public class APIIntegrationTest extends BaseTest {
 		// Tests
 		// 1. Check for NOT NULL
 		assertReponseNotNull(response);
-		
-		
+
 	}
 
+	/**
+	 * This test is to test a specific sensor. First get readings of a specific
+	 * sensor. Make sure the response is not null. Second, check the time range
+	 * of the sensor readings.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testSpecificSensor() throws IOException {
-		
+
 		String response = APIHelper
 				.processGetSpecificSensorReadings(queryStringFactory
 						.generateSpecificSensorReadingsQuery());

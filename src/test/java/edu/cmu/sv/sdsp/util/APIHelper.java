@@ -113,9 +113,11 @@ public class APIHelper {
 	 * @param deviceType
 	 *            -Model of the device
 	 * @param resultType
-	 *            -Type of a contained sensor, e.g., temperature, CO2 level etc.
-	 *            A device type could correspond to multiple sensor types if the
-	 *            device has multiple sensors.
+	 *            <ul>
+	 *            <li>type of a contained sensor, e.g., temperature, co2 level
+	 *            etc. a device type could correspond to multiple sensor types
+	 *            if the device has multiple sensors.</li>
+	 *            </ul>
 	 * @return The request string which invokes the HTTP GET operation.
 	 * @throws IOException
 	 */
@@ -130,8 +132,11 @@ public class APIHelper {
 	 * readings to sensor data service platform.
 	 * 
 	 * @param param
-	 *            -The json object contains the query contents. The jsonobject
-	 *            contains device_id, timestamp, sensor_type, sensor_value
+	 *            <ul>
+	 *            <li>The json object contains the query contents. The
+	 *            jsonobject contains device_id, timestamp, sensor_type,
+	 *            sensor_value</li>
+	 *            </ul>
 	 * @return The request string which invokes the HTTP POST operation.
 	 * @throws IOException
 	 */
@@ -146,10 +151,13 @@ public class APIHelper {
 	 * specific time point.
 	 * 
 	 * @param query
-	 *            -device_id: Unique uri/identifier of a device. -timestamp:
-	 *            Time of the readings to query. -sensor_type: Type of the
-	 *            sensor (e.g., temperature, CO2, etc.) to query.
-	 *            -result_format: Either json or csv.
+	 *            <ul>
+	 *            <li>device_id: Unique uri/identifier of a device.</li>
+	 *            <li>-timestamp: Time of the readings to query.</li>
+	 *            <li>-sensor_type: Type of the sensor (e.g., temperature, CO2,
+	 *            etc.) to query.</li>
+	 *            <li>
+	 *            -result_format: Either json or csv.</li>
 	 * 
 	 * @return The request string which invokes the HTTP GET operation.
 	 * @throws IOException
@@ -167,11 +175,14 @@ public class APIHelper {
 	 * Link: https://github.com/SensorServicePlatform/APIs#5
 	 * 
 	 * @param query
-	 *            -device_id: Unique uri/identifier of a device. start_time:
-	 *            Start time to retrieve the sensor readings. end_time: End time
-	 *            to retreive the sensor readings. sensor_type: Type of the
-	 *            sensor (e.g., temperature, CO2, etc.) to retrieve its
-	 *            readings. result_format: Either json or csv.
+	 *            <ul>
+	 *            <li>-device_id: Unique uri/identifier of a device.</li>
+	 *            <li>start_time: Start time to retrieve the sensor readings.</li>
+	 *            <li>end_time: End time to retreive the sensor readings.</li>
+	 *            <li>sensor_type: Type of the sensor (e.g., temperature, CO2,
+	 *            etc.) to retrieve its readings.</li>
+	 *            <li>result_format: Either json or csv.</li>
+	 *            <ul>
 	 * @return The request string which invokes the HTTP GET operation.
 	 * @throws IOException
 	 */
@@ -187,6 +198,7 @@ public class APIHelper {
 	 * Link: https://github.com/SensorServicePlatform/APIs#6
 	 * 
 	 * @param query
+	 * 			<ul>
 	 *            -timestamp: Time to query the last readings of all sensors for
 	 *            all devices registered at the sensor data service platform.
 	 *            sensor_type: Type of the sensor (e.g., temperature, CO2,
