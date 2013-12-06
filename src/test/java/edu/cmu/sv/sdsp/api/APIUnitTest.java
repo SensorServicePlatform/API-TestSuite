@@ -33,20 +33,42 @@ import edu.cmu.sv.sdsp.util.APIHelper.ResultType;
 @RunWith(JUnit4.class)
 // @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class APIUnitTest extends BaseTest {
+	/**
+	 * This is the factory to create all json objects for tests.
+	 */
 	private JsonObjectFactory jsonFactory;
+	/**
+	 * This is the factory to create all query strings for the tests.
+	 */
 	private QueryStringFactory queryStringFactory;
-	private final int TIMEOUT=2*60*1000;//2 minutes
 
+	/**
+	 * This is to set the maximum running time for each task. When a test runs
+	 * over the time, cause a failure and go next.
+	 */
+	private final int TIMEOUT = 2 * 60 * 1000;// 2 minutes
+
+	/**
+	 * Singleton pattern is used here to create two factories and reuse them for
+	 * all api test requests.
+	 */
 	public APIUnitTest() {
 		jsonFactory = JsonObjectFactory.getInstance();
 		queryStringFactory = QueryStringFactory.getInstance();
 	}
 
-	
-	// If the response time>timeout, cause a failure.
+	/**
+	 * If the response time>timeout, cause a failure.
+	 */
 	@Rule
 	public Timeout globalTimeout = new Timeout(TIMEOUT);
-	
+
+	/**
+	 * To test whether the user can get device information from the Eistenin
+	 * server using the format JSON
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testGetDevicesJson() throws IOException {
 		String response = APIHelper.processGetDevices(ResultType.JSON);
@@ -58,6 +80,12 @@ public class APIUnitTest extends BaseTest {
 		getArrayFromJsonString(response);
 	}
 
+	/**
+	 * To test whether the user can get device information from the server using
+	 * CSV.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testGetDevicesCSV() throws IOException {
 		String response = APIHelper.processGetDevices(ResultType.CSV);
@@ -66,6 +94,11 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the user can publish the sensor readings to the server.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testPublishSensorReadings() throws IOException {
 		String response = APIHelper.processPublishSensorReadings(jsonFactory
@@ -75,6 +108,12 @@ public class APIUnitTest extends BaseTest {
 		assertResponseSaved(response);
 	}
 
+	/**
+	 * To test whether the user can do a sensor reading query request and get
+	 * the right result.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testQuerySensorReadings() throws IOException {
 		String response = APIHelper
@@ -86,6 +125,12 @@ public class APIUnitTest extends BaseTest {
 	}
 
 	// GET SENSOR READINGS IN A TIME RANGE FOR A DEVICE
+	/**
+	 * To test whether the user can get sensor readings in a time range for a
+	 * device.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testSensorReadingBYTimeDevice() throws IOException {
 		String response = APIHelper
@@ -94,6 +139,12 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the sensor readings of all devices are available and
+	 * right.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testSensorReadingsAllDevices() throws IOException {
 		String response = APIHelper
@@ -105,6 +156,12 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the user can get the right sensor readings from the
+	 * server.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testLastestSensorReadings() throws IOException {
 		String response = APIHelper
@@ -116,6 +173,11 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the user can get sensor types in the format JSON.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testGetSensorTypesJson() throws IOException {
 		String response = APIHelper.processGetSensorTypes("firefly_v3",
@@ -126,6 +188,12 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the use can get all the sensor types of one given devices
+	 * in the format CSV.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testGetSensorTypesCSV() throws IOException {
 		String response = APIHelper.processGetSensorTypes("firefly_v3",
@@ -135,6 +203,11 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the add sensor operation is valid.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testAddSensorType() throws IOException {
 		// Invoke the API to add a sensor type
@@ -147,6 +220,11 @@ public class APIUnitTest extends BaseTest {
 				response.equalsIgnoreCase(ADD_SENSOR_TYPE_SUCCESSFUL));
 	}
 
+	/**
+	 * To test whether the add device type operation is valid.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testAddDeviceType() throws IOException {
 		// Invoke the API to add a new device type
@@ -159,6 +237,11 @@ public class APIUnitTest extends BaseTest {
 				response.equalsIgnoreCase(ADD_DEVICE_TYPE_SUCCESSFUL));
 	}
 
+	/**
+	 * To test whether the add device operation is valid.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testAddDevice() throws IOException {
 		// Invoke the API to add a new device type
@@ -171,6 +254,11 @@ public class APIUnitTest extends BaseTest {
 				response.equalsIgnoreCase(ADD_DEVICE_SUCCESSFUL));
 	}
 
+	/**
+	 * To test whether the add sensor operation is valid.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testAddSensor() throws IOException {
 		// Invoke the API to add a new device type
@@ -182,7 +270,12 @@ public class APIUnitTest extends BaseTest {
 		Assert.assertTrue("Error when adding a new device",
 				response.equalsIgnoreCase(ADD_SENSOR_SUCCESSFUL));
 	}
-	
+
+	/**
+	 * To test whether the specific sensor readings is valid.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testSpecificSensorReadings() throws IOException {
 		String response = APIHelper
@@ -192,6 +285,11 @@ public class APIUnitTest extends BaseTest {
 		assertReponseNotNull(response);
 	}
 
+	/**
+	 * To test whether the sensor readings in a certain time range is valid.
+	 * 
+	 * @throws IOException
+	 */
 	@Test
 	public void testSensorReadingsTimeRange() throws IOException {
 		String response = APIHelper
