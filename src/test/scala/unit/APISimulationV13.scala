@@ -1,3 +1,19 @@
+/**
+ * Copyright (c) 2013 Carnegie Mellon University Silicon Valley. 
+ * All rights reserved. 
+ * 
+ * This program and the accompanying materials are made available
+ * under the terms of dual licensing(GPL V2 for Research/Education
+ * purposes). GNU Public License v2.0 which accompanies this distribution
+ * is available at http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+ * 
+ * Please contact http://www.cmu.edu/silicon-valley/ for more specific
+ * information.
+ */
+
 package unit
 
 import io.gatling.core.Predef._
@@ -8,6 +24,9 @@ import scala.concurrent.duration._
 import bootstrap._
 import assertions._
 
+/**
+ * Author: Surya Kiran
+ */
 class APISimulationV13 extends Simulation {
 	val httpConf_v13 = http.baseURL("http://einstein.sv.cmu.edu:9000")
 		.acceptCharsetHeader("utf-8")
@@ -44,7 +63,7 @@ class APISimulationV13 extends Simulation {
 						.headers(headers_1))
 		}
 			
-	setUp(scn.inject(ramp(1000 users) over (10 seconds)))
+	setUp(scn.inject(ramp(100 users) over (10 seconds)))
 		.protocols(httpConf_v13)
 		.assertions(
 			global.successfulRequests.percent.is(100),
