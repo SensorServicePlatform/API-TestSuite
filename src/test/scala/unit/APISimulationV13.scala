@@ -25,17 +25,24 @@ import bootstrap._
 import assertions._
 
 /**
+ * Class that runs Load and Performance testing for GET operations
+ * on the Sensor Data Service Platform V1.3
+ *
  * Author: Surya Kiran
  */
 class APISimulationV13 extends Simulation {
+	// Perpare the HTTP config we would like to invoke the request on  
 	val httpConf_v13 = http.baseURL("http://einstein.sv.cmu.edu:9000")
 		.acceptCharsetHeader("utf-8")
 		.acceptHeader("text/html")
 		.disableFollowRedirect
 
+	// Difference headers for the requests.		
 	val headers_1 = Map("Keep-Alive" -> "115")
 	val headers_2 = Map("Accept" -> "application/json", "Keep-Alive" -> "115")
-		
+
+	// Build up the scenario on which we would like to perform 
+	// Load testing and gauge it's performance.
 	val scn = scenario("Sensor Data Platform Service v1.3")
 		.group("Get Devices v1.3") {
 			exec(
@@ -49,6 +56,9 @@ class APISimulationV13 extends Simulation {
 						.get("/getAllDevices/csv")
 						.headers(headers_1))
 		}
+	// Pause between the requests for 100 milliseconds.
+	// And perform another round of testing on different
+	// API methods	
 		.pause(0 milliseconds, 100 milliseconds)
 		.group("Get Sensor Types") {
 			exec(
@@ -62,7 +72,10 @@ class APISimulationV13 extends Simulation {
 						.get("/getAllSensorTypes/csv")
 						.headers(headers_1))
 		}
-			
+		
+	// Setup and execute the scenario that is prepared above.
+	// Run it simulating 100 users accessing the API in 
+	// a time range of 10 seconds. 
 	setUp(scn.inject(ramp(100 users) over (10 seconds)))
 		.protocols(httpConf_v13)
 		.assertions(
