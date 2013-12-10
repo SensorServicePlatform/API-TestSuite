@@ -11,11 +11,11 @@ Steps to run:
 
 mvn test
 
-3. To Run performance tests for v1.2 of the API, please run
+3. To Run performance tests for v1.2 of the API, please run 
 
 mvn gatling:execute -Dgatling.simulationClass=unit.APISimulationV12
 
-4. To Run performance tests for v1.3 of the API, please run
+4. To Run performance tests for v1.3 of the API, please run 
 
 mvn gatling:execute -Dgatling.simulationClass=unit.APISimulationV13
 
