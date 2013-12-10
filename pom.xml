@@ -113,7 +113,7 @@
 								<include>**/*.scala</include>
 							</includes>-->
 							<excludes>
-								<exclude>advanced/*.scala</exclude>
+								<exclude>unit/*V13.scala</exclude>
 							</excludes>
 						</configuration>
 					</execution>
