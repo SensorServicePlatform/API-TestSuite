@@ -392,6 +392,9 @@ public class APIHelper {
 		try {
 			response = HttpHelper.httpGet(url);
 		} finally {
+			if(response !=null && response.length() > 200) {
+				response = response.substring(0, 200) + " <<< String truncated to 200 chars";
+			}
 			log.trace("Response String: " + response);
 		}
 
@@ -421,6 +424,9 @@ public class APIHelper {
 		try {
 			response = HttpHelper.httpPostSensorReading(url, content);
 		} finally {
+			if(response !=null && response.length() > 200) {
+				response = response.substring(0, 200) + " <<< String truncated to 200 chars";
+			}
 			log.trace("Response String: " + response);
 		}
 

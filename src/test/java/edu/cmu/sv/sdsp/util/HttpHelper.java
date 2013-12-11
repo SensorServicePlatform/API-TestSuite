@@ -175,6 +175,7 @@ public class HttpHelper {
 		// Check for HTTP status code 200 - which means OK.
 		// All status code details at:
 		// http://www.w3.org/Protocols/HTTP/HTRESP.html
+		log.trace(" ***** Response Code :: " + conn.getResponseCode());
 		if (conn.getResponseCode() != 200) {
 			throw new IOException(conn.getResponseMessage());
 		}

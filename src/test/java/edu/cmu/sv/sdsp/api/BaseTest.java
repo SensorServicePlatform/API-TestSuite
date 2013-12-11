@@ -25,6 +25,7 @@ import org.junit.Before;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import edu.cmu.sv.sdsp.util.APIConstants;
@@ -92,5 +93,25 @@ public class BaseTest implements APIConstants {
 		JsonArray jsonArray = element.getAsJsonArray();
 		
 		return jsonArray;
+	}
+	
+	/**
+	 * This utility method parses the response string and returns
+	 * the string returned as message.
+	 * 
+	 * @param response - Json String
+	 * @return - Response message
+	 */
+	protected String parseResponseMessage(String response) {
+		JsonObject jsonObj = new JsonObject();
+		JsonParser parser =  new JsonParser();
+		try {
+			jsonObj = (JsonObject) parser.parse(response);
+			return jsonObj.get("message").getAsString();	
+		} catch(Exception e) {
+			// Just ignore the error message
+		}
+		
+		return response;
 	}
 }
